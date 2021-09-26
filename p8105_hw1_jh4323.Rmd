@@ -3,3 +3,17 @@ title: "p8105_hw1_jh4323.Rmd"
 output: github_document
 ---
 
+```{r}
+library(tidyverse)
+
+problem1_df <- tibble(
+  vec_numeric = rnorm(10),
+  vec_logical = vec_numeric > 0,
+  vec_char = c("James", "Linda", "Jerry", "Jason", "Mary", 
+               "Michael", "Sarah", "David", "Betty", "Joseph"),
+  vec_factor = factor(c("poor", "fair", "good", "fair", "poor", 
+                        "poor", "good", "good", "fair", "good"))
+)
+```
+
+
