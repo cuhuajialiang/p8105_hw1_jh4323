@@ -47,3 +47,11 @@ as.numeric(factor(c("male", "female", "female")))
 
 The `as.numeric` function can successfully convert numeric, logical and factor vector to numbers. However, it can not convert character vector to numbers. In particular, as.numeric applied to a factor is meaningless, and may happen by implicit coercion. This explains what happened when I try to take the mean.
 
+## Problem 2
+
+### 2.1 load the `penguins` dataset
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+
