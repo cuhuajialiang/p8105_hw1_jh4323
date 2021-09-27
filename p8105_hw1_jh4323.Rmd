@@ -1,7 +1,6 @@
 ---
 title: "p8105_hw1_jh4323.Rmd"
 author: Jialiang hua
-date: 2021-9-27
 output: github_document
 ---
 
@@ -47,9 +46,10 @@ as.numeric("James")
 as.numeric(factor(c("male", "female", "female")))
 ```
 
-The `as.numeric` function can successfully convert numeric, logical and 
-factor vector to numbers. However, it can not convert character vector to numbers. In particular, as.numeric applied to a factor is meaningless, and 
-may happen by implicit coercion. This explains what happened when I try to take the mean.
+The `as.numeric` function can successfully convert numeric and logical vector
+to numbers. However, it can not convert character vector to numbers. In
+particular, as.numeric applied to a factor is meaningless, and may happen 
+by implicit coercion. This explains what happened when I try to take the mean.
 
 ## Problem 2
 
@@ -61,8 +61,7 @@ data("penguins", package = "palmerpenguins")
 
 ### 2.2 Describe the dataset
 
-The data in this dataset includes `r names(penguins)` 
-important variables.
+The data in this dataset includes `r names(penguins)` important variables.
   
   Species contains `r levels(pull(penguins, species))`.  
   Island contains `r levels(pull(penguins, island))`.  
@@ -74,4 +73,17 @@ important variables.
   The size of the dataset is `r nrow(penguins)` rows and `r ncol(penguins)` columns.  
   The mean of flipper length is `r mean(pull(penguins, flipper_length_mm) , na.rm = TRUE)`.
   
+### 2.3 Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x)
+
+```{r scatter_plot}
+library(ggplot2)
+set.seed(1)
+
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+ggsave("penguins_scatterplot.pdf", height = 6, width = 6)
+```
+
+
+
   
