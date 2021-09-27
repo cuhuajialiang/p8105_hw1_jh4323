@@ -1,14 +1,20 @@
 ---
 title: "p8105_hw1_jh4323.Rmd"
+author: Jialiang hua
+date: 2021-9-27
 output: github_document
 ---
+
+This is my first homework for P8105!
+
 ## Problem 1
 
-```{r}
+### 1.1 Create a data frame according to the requirement
+
+```{r prob1_df}
 library(tidyverse)
 set.seed(1)
 
-# create dataframe problem1_df
 problem1_df <- tibble(
   vec_numeric = rnorm(10),
   vec_logical = vec_numeric > 0,
@@ -17,8 +23,11 @@ problem1_df <- tibble(
   vec_factor = factor(c("poor", "fair", "good", "fair", "poor", 
                         "poor", "good", "good", "fair", "good"))
 )
+```
 
-# Try to take the mean of each variable in the data frame
+### 1.2 Try to take the mean of each variable in the data frame
+
+```{r take_mean}
 mean(pull(problem1_df, vec_numeric))
 mean(pull(problem1_df, vec_logical))
 mean(pull(problem1_df, vec_char))
@@ -26,4 +35,15 @@ mean(pull(problem1_df, vec_factor))
 ```
 
 The mean of the numeric vector and the logical vector can be taken from the data frame. However, it doesn't work for the character vector and the factor vector.
+
+### 1.3 Convert to numeric
+
+```{r convert_to_numeric, eval = FALSE}
+as.numeric(FALSE)
+as.numeric(TRUE)
+as.numeric("James")
+as.numeric(factor(c("male", "female", "female")))
+```
+
+The `as.numeric` function can successfully convert numeric, logical and factor vector to numbers. However, it can not convert character vector to numbers. In particular, as.numeric applied to a factor is meaningless, and may happen by implicit coercion. This explains what happened when I try to take the mean.
 
